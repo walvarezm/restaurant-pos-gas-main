@@ -6,6 +6,19 @@ function include(filename) {
   return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
 
+function loginUser(email, password) {
+  // Aquí puedes agregar la lógica para verificar las credenciales del usuario
+  // Por ejemplo, puedes verificar contra una base de datos o una hoja de cálculo de Google Sheets
+
+  // Ejemplo de respuesta de éxito
+  if (email === 'user@example.com' && password === 'password123') {
+    return { success: true };
+  } else {
+    return { success: false };
+  }
+}
+
+
 function getData() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let ws = ss.getSheetByName("Items");
