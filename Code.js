@@ -7,17 +7,17 @@ function include(filename) {
 }
 
 function loginUser(email, password) {
-  // Aquí puedes agregar la lógica para verificar las credenciales del usuario
-  // Por ejemplo, puedes verificar contra una base de datos o una hoja de cálculo de Google Sheets
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ws = ss.getSheetByName("Users");
+  const data = ws.getRange(2, 1, ws.getLastRow() - 1, 2).getValues();
 
-  // Ejemplo de respuesta de éxito
-  if (email === 'user@example.com' && password === 'password123') {
-    return { success: true };
-  } else {
-    return { success: false };
+  for (let i = 0; i < data.length; i++) {
+    if (data[i][0] === email && data[i][1] === password) {
+      return { success: true };
+    }
   }
+  return { success: false };
 }
-
 
 function getData() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
